@@ -22,4 +22,19 @@ def __pg_request(query):
         return False
     return data
 
+def __pg_request_postgres(query):
+
+    db_conf = conf.get_conf('db.conf')
+    try:
+        conn = pg.connect("dbname='postgres' user='" + str(db_conf['USER']) + "' host='" + str(db_conf['IP']) + "' password='" + str(db_conf['PWD']) +"'")
+        cursor =  conn.cursor()
+        cursor.execute(query)
+        data = cursor.fetchall()
+        cursor.close()
+    except ValueError:
+        print 'Unable to connect database : \n' + ValueError
+        m_log.write_log('appli.log','m_IO.add_bottle_pg | Unable to manage the database link' + str(ValueError))
+        return False
+    return data
+
 
