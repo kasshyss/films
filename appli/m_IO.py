@@ -13,8 +13,11 @@ def __pg_request(query):
     try:
         conn = pg.connect("dbname='" + str(db_conf['DB']) + "' user='" + str(db_conf['USER']) + "' host='" + str(db_conf['IP']) + "' password='" + str(db_conf['PWD']) +"'")
         cursor =  conn.cursor()
-        cursor.execute(query)
-        data = cursor.fetchall()
+        print cursor.execute(query)
+        if query[:6:] == 'SELECT':
+            data = cursor.fetchall()
+        else:
+            data='Query done : ' + query
         cursor.close()
     except ValueError:
         print 'Unable to connect database : \n' + ValueError

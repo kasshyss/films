@@ -9,7 +9,7 @@ import m_log as log
 def get_conf(file_name):
 
     try:
-        file = open(os.path.dirname(os.path.abspath(__file__)) + os.path.sep + 'config' + os.path.sep + file_name, 'r')  
+        file = open(os.path.dirname(os.path.abspath(__file__)) + os.path.sep + 'conf' + os.path.sep + file_name, 'r')  
         lines = file.readlines()
         file.close()
     except ValueError:
