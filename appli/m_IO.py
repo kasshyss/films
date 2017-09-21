@@ -12,8 +12,10 @@ def __pg_request(query):
     db_conf = conf.get_conf('db.conf')
     try:
         conn = pg.connect("dbname='" + str(db_conf['DB']) + "' user='" + str(db_conf['USER']) + "' host='" + str(db_conf['IP']) + "' password='" + str(db_conf['PWD']) +"'")
+        print conn
         cursor =  conn.cursor()
-        print cursor.execute(query)
+        cursor.execute(query)
+        conn.commit()
         if query[:6:] == 'SELECT':
             data = cursor.fetchall()
         else:
@@ -25,19 +27,14 @@ def __pg_request(query):
         return False
     return data
 
-def __pg_request_postgres(query):
+# get a dico
+# label : label value
+# full_name : full name
+def set_nationality(data):
+    __pg_request(conf.get_conf('queries.conf')['set_nat'].replace('%LABEL%', data['label']).replace('%FULL%', data['full_name']))
+    log.write_log('appli.log','m_IO.set_nationality | add new nationality : ' + data['label'])
+    return True
 
-    db_conf = conf.get_conf('db.conf')
-    try:
-        conn = pg.connect("dbname='postgres' user='" + str(db_conf['USER']) + "' host='" + str(db_conf['IP']) + "' password='" + str(db_conf['PWD']) +"'")
-        cursor =  conn.cursor()
-        cursor.execute(query)
-        data = cursor.fetchall()
-        cursor.close()
-    except ValueError:
-        print 'Unable to connect database : \n' + ValueError
-        m_log.write_log('appli.log','m_IO.add_bottle_pg | Unable to manage the database link' + str(ValueError))
-        return False
-    return data
-
+def get_nationalities():
+    return __pg_request(conf.get_conf('queries.conf')['get_nat'])
 
