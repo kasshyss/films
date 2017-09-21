@@ -57,7 +57,7 @@ def set_director(data_director):
 
 # get directors data without nationality
 def get_directors():
-    log.write_log('appli.log','m_IO.get_nationalities | Get directors')
+    log.write_log('appli.log','m_IO.get_director | Get directors')
     return __pg_request(conf.get_conf('queries.conf')['get_director'])
 
 # get directors data with nationality
@@ -80,4 +80,29 @@ def get_directors_nat():
          tmp.append(data_nat[director[0]])
          directors.append(tuple(tmp))
 
+     log.write_log('appli.log','m_IO.get_director_nat | Get directors with nationality')
      return directors
+
+# create a film, you need to have a existing director in the db
+# get dico
+# name : film name
+# creation : creation date
+# resume : resume of the film
+# directors : d1,d2,d3
+def set_film(data_film):
+    __pg_request(conf.get_conf('queries.conf')['set_film'].replace('%NAME%', data_film['name']).replace('%CDATE%', data_film['creation']).replace('%RESUME%', data_film['resume']))
+    for director in data_film['directors'].split(','):
+        __pg_request(conf.get_conf('queries.conf')['set_film_creator'].replace('%NAME%', data_film['name']).replace('%CREATOR%', director))
+    log.write_log('appli.log','m_IO.set_film | Create a new film '+data_film['name'])
+    return True
+
+# return film list
+def get_films():
+    log.write_log('appli.log','m_IO.get_films | Get films without director')
+    return __pg_request(conf.get_conf('queries.conf')['get_films_full'])
+
+# return film with director
+def get_films_dir():
+    data_nat = {}
+    return 'TBD'
+

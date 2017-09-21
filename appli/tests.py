@@ -18,10 +18,20 @@ elif sys.argv[1] == 'dir':
         print country
     for p in param:
         tmp[p] = raw_input(p + ' : ')
-    #print io.set_director(tmp)
+    print io.set_director(tmp)
     print io.get_directors()
     print io.get_directors_nat()
-
+elif sys.argv[1] == 'film':
+    print 'IO films'
+    tmp = {}
+    param = {'name', 'creation', 'resume','directors'}
+    for director in io.get_directors_nat():
+        print director
+    for p in param:
+        tmp[p] = raw_input(p + ' : ')
+    #print io.set_film(tmp)
+    print io.get_films()
+    print io.get_films_dir()
 else:
     print 'chose a test'
     print 'nat = test nationality'
