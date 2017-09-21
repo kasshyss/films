@@ -58,7 +58,7 @@ def set_director(data_director):
 # get directors data without nationality
 def get_directors():
     log.write_log('appli.log','m_IO.get_nationalities | Get directors')
-    return __pg_request(conf.get_conf('queries.conf')['get_director_full'])
+    return __pg_request(conf.get_conf('queries.conf')['get_director'])
 
 # get directors data with nationality
 def get_directors_nat():
@@ -73,5 +73,11 @@ def get_directors_nat():
 
      directors=[]
      for director in __pg_request(conf.get_conf('queries.conf')['get_director']):
-         directors.append(list(director).append(data_nat[director[0]]))
-     return tuple(directors)
+         
+         tmp = []
+         for item in list(director):
+             tmp.append(item)
+         tmp.append(data_nat[director[0]])
+         directors.append(tuple(tmp))
+
+     return directors
