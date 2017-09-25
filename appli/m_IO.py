@@ -113,7 +113,21 @@ def get_notes_films():
     return __pg_request(conf.get_conf('queries.conf')['get_notes'])
 
 # get notes for a specific film
+# param = film ID
 def get_notes_spe(film_id):
-    log.write_log('appli.log','m_IO.get_notes_films | Get note table link with film name')
+    log.write_log('appli.log','m_IO.get_notes_films_spec | Get note table link with film name for one specific film')
     return __pg_request(conf.get_conf('queries.conf')['get_notes_spec'].replace('%FILMID%', film_id))
+
+# create a new note
+# get dico
+# note_by : people who wote the film
+# finale_note : the true noe without detail
+# art_note : artistique note
+# story_note : is the story good
+# fun_note : is the film fun
+# film_id : the id the film which deal with
+def set_note(data_note):
+    __pg_request(conf.get_conf('queries.conf')['set_note'].replace('%NOTEBY%', data_note['note_by']).replace('%FNOTE%', data_note['final_note']).replace('%ART%', data_note['art_note']).replace('%STORY%', data_note['story_note']).replace('%FUN%', data_note['fun_note']).replace('%FILM%', data_note['film_id']).replace('%COM%', data_note['comment'].replace("'", "''")))
+    log.write_log('appli.log','m_IO.get_notes_films | Get note table link with film name for one specific film')
+    return True
 
