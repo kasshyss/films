@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+    <head>
+	<link href="{{url_for('static', filename='my_style.css')}}" rel="stylesheet" type="text/css"/>
+        <meta charset="utf-8" />
+	<title>{{app_name}}</title>
+    </head>
+
+    <body>
+	    <h1>{{title}}</h1>
+	    <ul>
+		    {%for option in options%}
+		    {{option.split(':')[0]}} : <form action='/{{option.split(':')[1]}}'><input type='submit' value='{{option.split(':')[2]}}' /></form>
+		    {% endfor %}
+	    </ul>
+    </body>
+</html>
+
