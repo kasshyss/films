@@ -102,4 +102,18 @@ def get_films():
     return __pg_request(conf.get_conf('queries.conf')['get_films_full'])
 
 
-#Create note
+# Get note as is without film data
+def get_notes():
+    log.write_log('appli.log','m_IO.get_notes | Get note table AS IS')
+    return __pg_request(conf.get_conf('queries.conf')['get_notes_full'])
+
+# Get last notes - to be display
+def get_notes_films():
+    log.write_log('appli.log','m_IO.get_notes_films | Get note table link with film name')
+    return __pg_request(conf.get_conf('queries.conf')['get_notes'])
+
+# get notes for a specific film
+def get_notes_spe(film_id):
+    log.write_log('appli.log','m_IO.get_notes_films | Get note table link with film name')
+    return __pg_request(conf.get_conf('queries.conf')['get_notes_spec'].replace('%FILMID%', film_id))
+

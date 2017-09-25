@@ -36,7 +36,11 @@ elif sys.argv[1] == 'query':
     print sys.argv[2]
     print io.__pg_request(sys.argv[2])
     print io.get_films()
-    print io.get_directors_nat()
+    print io.get_directors_nat(p)
+elif sys.argv[1] == 'note':
+    print io.get_notes()
+    print io.get_notes_films()
+    print io.get_notes_spe(raw_input('ID du film - historique notation : '))
 else:
     print 'chose a test'
     print 'nat = test nationality'
