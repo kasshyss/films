@@ -17,3 +17,13 @@ def index():
             ,title = label_conf['index_title']
             ,options = label_conf['index_actions'].split(',')
             )
+
+@app.route('/creator/')
+def creator():
+    label_conf = conf.get_conf('template' + language + '.conf')
+    return render_template(
+            'creator.html'
+            ,app_name = app_name
+            ,title = label_conf['creator_title']
+            ,directors = io.get_directors_nat()
+            )
