@@ -10,14 +10,17 @@
 	    <h1>{{title}}</h1>
 	    <center>
 		<table>
-		    {%for director in directors%}
+		    {%for items in display_list%}
 		    <tr>
-			    {%for item in director%}
+			    {%for item in items%}
 		    	    <td>{{item}}</td>
 			    {%endfor%}
 		    </tr>
 		    {%endfor%}
 		</table>
+		<form action='/index/'>
+			<input type='submit' value='{{button_label}}' />
+		</form>
 	    </center>
     </body>
 </html>

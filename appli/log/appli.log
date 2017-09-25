@@ -1,0 +1,21 @@
+25/09/17 16:24:50 | m_IO.get_films | Get films without director
+25/09/17 16:27:16 | m_IO.get_films | Get films without director
+25/09/17 16:28:32 | m_IO.get_films | Get films without director
+25/09/17 16:29:35 | m_IO.get_films | Get films without director
+25/09/17 16:30:38 | m_IO.get_films | Get films without director
+25/09/17 16:31:46 | m_IO.get_films | Get films without director
+25/09/17 16:32:15 | m_IO.get_films | Get films without director
+25/09/17 16:33:56 | m_IO.get_films | Get films without director
+25/09/17 16:34:28 | m_IO.get_notes_films | Get note table link with film name for one specific film
+25/09/17 16:34:28 | m_IO.get_notes | Get note table AS IS
+25/09/17 16:34:28 | m_IO.get_notes_films | Get note table link with film name
+25/09/17 16:34:34 | m_IO.get_notes_films_spec | Get note table link with film name for one specific film
+25/09/17 16:48:32 | m_IO.get_director_nat | Get directors with nationality
+25/09/17 16:48:38 | m_IO.get_films | Get films without director
+25/09/17 16:48:42 | m_IO.get_films | Get films without director
+25/09/17 16:51:30 | m_IO.get_notes_films | Get note table link with film name
+25/09/17 16:53:31 | m_IO.get_notes_films | Get note table link with film name
+25/09/17 16:58:43 | m_IO.get_director_nat | Get directors with nationality
+25/09/17 16:59:17 | m_IO.get_director_nat | Get directors with nationality
+25/09/17 17:01:18 | m_IO.get_films | Get films without director
+25/09/17 17:03:55 | m_IO.get_notes_films | Get note table link with film name
