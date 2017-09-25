@@ -32,6 +32,11 @@ elif sys.argv[1] == 'film':
     #print io.set_film(tmp)
     print io.get_films()
     print io.get_films_dir()
+elif sys.argv[1] == 'query':
+    print sys.argv[2]
+    print io.__pg_request(sys.argv[2])
+    print io.get_films()
+    print io.get_directors_nat()
 else:
     print 'chose a test'
     print 'nat = test nationality'

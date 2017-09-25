@@ -101,8 +101,5 @@ def get_films():
     log.write_log('appli.log','m_IO.get_films | Get films without director')
     return __pg_request(conf.get_conf('queries.conf')['get_films_full'])
 
-# return film with director
-def get_films_dir():
-    data_nat = {}
-    return 'TBD'
 
+#Create note
