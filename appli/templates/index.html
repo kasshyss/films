@@ -7,12 +7,36 @@
     </head>
 
     <body>
-	    <h1>{{title}}</h1>
-	    <ul class='flex-container'>
-		    {%for option in options%}
-		    <li class='flex-item'>{{option.split(':')[0]}} : <form action='/{{option.split(':')[1]}}'><input type='submit' value='{{option.split(':')[2]}}' /></form></li>
+	<section class="hero is-fullheight is-dark">
+    <div class="hero-head">
+      <div class="container">
+        <nav class="nav">
+          <div class="container">
+            <div class="nav-left">
+              <a class="nav-item" href="../index.html">
+               	{{title}}
+              </a>
+            </div>
+            <span class="nav-toggle">
+              <span></span>
+              <span></span>
+              <span></span>
+            </span>
+            <div class="nav-right nav-menu">
+		 {%for option in options%}
+		 <span class="nav-item">
+			<a class="button is-default" href='{{option.split(':')[1]}}'>
+		    	{{option.split(':')[0]}}
+			</a>
+              	    </span>
 		    {% endfor %}
-    	   </ul>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </div>
+	</section>
+
     </body>
 </html>
 
