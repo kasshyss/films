@@ -2,26 +2,76 @@
 <html>
     <head>
 	<link href="{{url_for('static', filename='bulma.css')}}" rel="stylesheet" type="text/css"/>
+	<link href="{{url_for('static', filename='display.css')}}" rel="stylesheet" type="text/css"/>
         <meta charset="utf-8" />
 	<title>{{app_name}}</title>
     </head>
 
     <body>
-	    <h1>{{title}}</h1>
-	    <center>
-		<table>
-		    {%for items in display_list%}
-		    <tr>
-			    {%for item in items%}
-		    	    <td>{{item}}</td>
-			    {%endfor%}
-		    </tr>
-		    {%endfor%}
-		</table>
-		<form action='/'>
-			<input type='submit' value='{{button_label}}' />
-		</form>
-	    </center>
+<section class="hero is-fullheight is-dark">
+    <div class="hero-head">
+      <div class="container">
+        <nav class="nav">
+          <div class="container">
+            <div class="nav-left">
+              <a class="nav-item" href="/">{{app_name}}</a>
+            </div>
+            <span class="nav-toggle">
+              <span></span>
+              <span></span>
+              <span></span>
+            </span>
+            <div class="nav-right nav-menu">
+		 <span class="nav-item">
+			<a class="button is-default" href='/'>{{button_label}}</a>
+              	 </span>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </div>
+    <div class="columns section">
+      <div class="column is-8">
+        <div class="title">{{title}}</div>
+      </div>
+    </div>
+<div class="columns">
+      {%for items in display_list%}
+      <div class="column is-4">
+        <div class="card">
+          <header class="card-header">
+            <p class="card-header-title">
+              <img src="https://placehold.it/64x64" class="avatar">
+	      {{items[1]}}
+            </p>
+          </header>
+          
+          <div class="card-content">
+            <div class="panel-block-item">
+              {%for item in items%}
+		{{item}}<br>
+	      {%endfor%}
+            </div>
+          </div>
+        </div>
+      </div>
+	{%endfor%}
+</div>
+
+	    
+	   
+
+    <div class="hero-foot">
+      <div class="container">
+        <div class="tabs is-centered">
+          <ul>
+            <li><a>Made by Meriadoc</a></li>
+            <li><a>Copyright 2017 Dwarf Corporation</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+</section>
     </body>
 </html>
 
