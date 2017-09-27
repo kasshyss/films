@@ -10,6 +10,18 @@ body {
     color: #fff;
     padding: 0 30px;
 }
+.card{
+  background-color: #E8E8E8;
+}
+.card-header{
+  font-weight: bold;
+  text-transform: uppercase;
+  border-radius;
+}
+.card-content{
+  font-weight: bold;
+  border-radius;
+}
 .nav-item{
     font-weight: bold;
     color: #fff;
@@ -24,7 +36,4 @@ body {
   height: 45px;
   border-radius;
 }
-.promo-img {
-  border-radius: 10px;
-  border: 10px solid #fff;
-}
+
