@@ -29,13 +29,12 @@ elif sys.argv[1] == 'film':
         print director
     for p in param:
         tmp[p] = raw_input(p + ' : ')
-    #print io.set_film(tmp)
+    print io.set_film(tmp)
     print io.get_films()
 elif sys.argv[1] == 'query':
     print sys.argv[2]
     print io.__pg_request(sys.argv[2])
     print io.get_films()
-    print io.get_directors_nat(p)
 elif sys.argv[1] == 'note':
     print io.get_films()
     param = {'note_by', 'final_note', 'art_note', 'story_note', 'fun_note', 'comment','film_id'}

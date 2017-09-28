@@ -22,7 +22,7 @@ def __pg_request(query):
         cursor.close()
     except ValueError:
         print 'Unable to connect database : \n' + ValueError
-        m_log.write_log('appli.log','m_IO.add_bottle_pg | Unable to manage the database link' + str(ValueError))
+        m_log.write_log('appli.log','m_IO.__pg_request | Unable to manage the database link' + str(ValueError))
         return False
     return data
 
@@ -59,6 +59,10 @@ def set_director(data_director):
 def get_directors():
     log.write_log('appli.log','m_IO.get_director | Get directors')
     return __pg_request(conf.get_conf('queries.conf')['get_director'])
+
+def get_directors_short():
+    log.write_log('appli.log','m_IO.get_director_short | Get directors name and ID')
+    return __pg_request(conf.get_conf('queries.conf')['get_creator_short'])
 
 # get directors data with nationality
 def get_directors_nat():
