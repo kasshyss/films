@@ -1,0 +1,84 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+	<link href="{{url_for('static', filename='bulma.css')}}" rel="stylesheet" type="text/css"/>
+	<link href="{{url_for('static', filename='add.css')}}" rel="stylesheet" type="text/css"/>
+        <meta charset="utf-8" />
+	<title>{{app_name}}</title>
+    </head>
+
+<body>
+  <section class="hero is-fullheight is-dark">
+<div class="hero-head">
+      <div class="container">
+        <nav class="nav">
+          <div class="container">
+            <div class="nav-left">
+              <a class="nav-item" href="/">{{app_name}}</a>
+            </div>
+            <span class="nav-toggle">
+              <span></span>
+              <span></span>
+              <span></span>
+            </span>
+            <div class="nav-right nav-menu">
+		 <span class="nav-item">
+			<a class="button is-default" href='/'>{{button_label}}</a>
+              	 </span>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </div>
+
+
+    <div class="hero-body">
+      <div class="container">
+        <div class="columns is-vcentered">
+          <div class="column is-4 is-offset-4">
+            
+	<h1 class="title">
+	     {{title}}
+        </h1>
+            
+	    <form action='/add_film/' method='POST'>
+	<div class="box">
+	        {%for item in fields.split(',')%}
+	              <label class="label">{{item.split(':')[0]}}</label>
+                          <p class="control">
+	      			<input class="input" type='{{item.split(':')[2]}}'  name='{{item.split(':')[1]}}'>
+              		  </p>
+	    	{%endfor%}
+                <hr>
+                <p class="control">
+	      	    <input class="button is-primary" type='submit' value='{{buttons.split(',')[0].split(':')[0]}}'>
+                </p>
+	</div>
+		 
+	<div class="box">
+		{%for director in directors%}
+		<input id='{{director[O]}}' name='directors{{director[0]}}' type='checkbox' value='{{director[0]}}'>  {{director[1]}}
+			<hr>
+		{%endfor%}
+	</div>
+        
+	     </form>
+	  </div>
+        </div>
+      </div>
+    </div>
+
+   <div class="hero-foot">
+      <div class="container">
+        <div class="tabs is-centered">
+          <ul>
+            <li><a>Made by Meriadoc</a></li>
+            <li><a>Copyright 2017 Dwarf Corporation</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+</section>
+</body>
+</html>

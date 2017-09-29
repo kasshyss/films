@@ -39,6 +39,7 @@ def film():
             ,button_label = label_conf['return_button']
             ,title = label_conf['film_title']
             ,display_list = io.get_films()
+            ,i=0
             )
 
 @app.route('/notes/')
@@ -82,3 +83,11 @@ def add_film():
                 request_data[key]=request.form[key]
         io.set_film(request_data)
         return film()
+
+@app.route('/add_director/', methods=['GET','POST'])
+def add_director():
+    label_conf = conf.get_conf('template' + language + '.conf')
+    if request.method == 'GET':
+        return 'TBD'
+    else: #POST
+        return 'TBD'
