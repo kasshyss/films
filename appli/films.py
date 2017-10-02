@@ -3,6 +3,9 @@
 from flask      import Flask, render_template, request
 import m_IO     as io
 import m_conf   as conf
+import sys
+reload(sys)
+sys.setdefaultencoding('utf-8')
 
 app = Flask(__name__)
 language = '_fr'
@@ -25,7 +28,7 @@ def creator():
     return render_template(
             'display.html'
             ,app_name = label_conf['app_name']
-            ,button_label = label_conf['return_button']
+            ,button_label = label_conf['return_button'].split(',')
             ,title = label_conf['creator_title']
             ,display_list = io.get_directors_nat()
             )
@@ -36,7 +39,7 @@ def film():
     return render_template(
             'display.html'
             ,app_name = label_conf['app_name']
-            ,button_label = label_conf['return_button']
+            ,button_label = label_conf['return_button'].split(',')
             ,title = label_conf['film_title']
             ,display_list = io.get_films()
             ,i=0
@@ -48,7 +51,7 @@ def notes():
     return render_template(
             'display.html'
             ,app_name = label_conf['app_name']
-            ,button_label = label_conf['return_button']
+            ,button_label = label_conf['return_button'].split(',')
             ,title = label_conf['note_title']
             ,display_list = io.get_notes_films()
             )
@@ -88,6 +91,18 @@ def add_film():
 def add_director():
     label_conf = conf.get_conf('template' + language + '.conf')
     if request.method == 'GET':
-        return 'TBD'
+        return render_template(
+                'add_director.html'
+                ,app_name = label_conf['app_name']
+                ,button_label = label_conf['return_button']
+                ,fields=label_conf['add_director_fields']
+                ,buttons = label_conf['add_button']
+                ,nats=io.get_nationalities()
+                )
     else: #POST
-        return 'TBD'
+        request_data={}
+        request_data['nat']=''
+        i=True
+        for key in request.form:
+            print key
+        return creator()

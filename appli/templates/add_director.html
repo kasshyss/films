@@ -23,9 +23,11 @@
               <span></span>
             </span>
             <div class="nav-right nav-menu">
+		 {%for item in button_label.split(',')%}
 		 <span class="nav-item">
-			<a class="button is-default" href='/'>{{button_label}}</a>
+			 <a class="button is-default" href='{{item.split(':')[1]}}'>{{item.split(':')[0]}}</a>
               	 </span>
+		 {%endfor%}
             </div>
           </div>
         </nav>
@@ -57,9 +59,8 @@
 	</div>
 		 
 	<div class="box">
-		{%for director in directors%}
-		<input id='{{director[O]}}' name='directors{{director[0]}}' type='checkbox' value='{{director[0]}}'>  {{director[1]}}
-			<hr>
+		{%for nat in nats%}
+		<input id='{{nat[0]}}' name='{{nats[nat[0]]}}', type='checkbox' value='{{nat[0]}}'>{{nat[1]}}<br>
 		{%endfor%}
 	</div>
         
