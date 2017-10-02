@@ -44,7 +44,7 @@
 	     {{title}}
         </h1>
             
-	    <form action='/add_film/' method='POST'>
+	    <form action='/add_director/' method='POST'>
 	<div class="box">
 	        {%for item in fields.split(',')%}
 	              <label class="label">{{item.split(':')[0]}}</label>
@@ -60,7 +60,7 @@
 		 
 	<div class="box">
 		{%for nat in nats%}
-		<input id='{{nat[0]}}' name='{{nats[nat[0]]}}', type='checkbox' value='{{nat[0]}}'>{{nat[1]}}<br>
+		<input id='{{nat[0]}}' name='nat{{nat[0]}}', type='checkbox' value='{{nat[0]}}'>{{nat[1]}}<hr>
 		{%endfor%}
 	</div>
         

@@ -101,8 +101,17 @@ def add_director():
                 )
     else: #POST
         request_data={}
-        request_data['nat']=''
+        request_data['nationalities']=''
         i=True
         for key in request.form:
-            print key
+            if key[:3:] == 'nat':
+                if i==True:
+                    i=False
+                    request_data['nationalities']=request.form[key]
+                else:
+                    tmp=request_data['nationalities']
+                    request_data['nationalities']=tmp+','+request.form[key]
+            else:
+                request_data[key]=request.form[key]
+        io.set_director(request_data)
         return creator()
